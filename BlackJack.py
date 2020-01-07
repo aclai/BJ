@@ -1,8 +1,13 @@
-# create an object "player", which stores the name, bankroll, hand(s), and bet(s) of the player.
-import Player
+# create object "card", which stores the index value of suit and number of cards. [x, y] x 1 - 4 for the 4 suits & y 1 - 13
+import Card
+
+# starting chips in millions of dollars
+bankroll = 10000
 
 # infinite loop until player answer "N" in newgame.py 
 while TRUE:
+    
+    
     
     # adding this layer to allow breaking as soon as someone bust without also eliminating the importution of "new_game.py"
     while TRUE:
@@ -13,8 +18,8 @@ while TRUE:
         dealerhand = []
         
         # ask player for bet amount
-        import bet
-        
+        bet = int(input ("please enter your bet in millions of dollars"))
+              
         # deal 1st card to player
         import deal_player
         # deal 1 card to dealer
@@ -31,9 +36,10 @@ while TRUE:
             break
         
         import check_winner
-  
+            break
+            
     # ask player if they want to keep playing | if yes, reset deck, hands, and bet(s) | else, return FALSE to break from loop
     import new_game
     if newgame == FALSE:
         break
-print("Thank you for playing^_^!")
+print("Thank you for playing^_^!") 

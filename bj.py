@@ -2,41 +2,50 @@
 import Card
 
 # starting chips in millions of dollars
-bankroll = 10000
+account_balance = 10000
 
 # infinite loop until player answer "N" in newgame.py 
-while TRUE:
-    
-    
+while True:
     
     # adding this layer to allow breaking as soon as someone bust without also eliminating the importution of "new_game.py"
-    while TRUE:
+    while True:
         # generate a list of a single deck of cards
         import deck
+        deck = deck.create_deck()
+        print (deck)
         
         # a list to save the dealer's hand
         dealerhand = []
+        # a list to save the player's hand
+        playerhand = []
         
         # ask player for bet amount
-        bet = int(input ("please enter your bet in millions of dollars"))
-              
+        import bet            
+        bet_amount = bet.bet()
+        
+        print(account_balance)
+        account_balance = account_balance + bet_amount
+        print(account_balance)
+        
+        
+        import deal_card
         # deal 1st card to player
-        import deal_player
+        deal_card.deal_card(playerhand)
         # deal 1 card to dealer
-        import deal_dealer
-        # deal 2nd card to player | importute all outcomes and ask for player decision until playerbust or dealer's turn
-        import deal_player
+        deal_card.dealcard(dealerhand)
+        # deal 2nd card to player | import all outcomes and ask for player decision until playerbust or dealer's turn
+        deal_card.dealcard(playerhand)
 
-        if playerbust == TRUE:
+        if playerbust == True:
             break
             
         import deal_dealer
         
-        if dealerbust == TRUE:
+        if dealerbust == True:
             break
         
         import check_winner
-            break
+        break
             
     # ask player if they want to keep playing | if yes, reset deck, hands, and bet(s) | else, return FALSE to break from loop
     import new_game

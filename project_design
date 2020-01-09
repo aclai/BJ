@@ -1,0 +1,120 @@
+Blackjack - A loop of infinite games until player choose to quit
+	1 deck
+	1 player
+	Shuffle after every game
+	No hole card
+	Unlimited split
+	Double on hard 10/11
+	Deal stops at hard 17
+
+Ask for player name
+Create deck
+bet
+deal cards - 1 player, 1 dealer, 1 player
+player decision
+deal to dealer
+result
+ask if player wants to continue
+
+
+Class:
+Player - class create "player" with 3 attributes, name, bankroll, and hand
+	name - ask for player input
+	bankroll - defaut starts wtih 10000
+	hand - {index, [betamount, [hand]]} 		(4 in total, limited by 4 of the same kind in a deck)
+		{1, [100, [club of ace, spade of 10]]}
+		{2, [200, [heart of ace, diamond of 2]]}
+		...
+
+CardCreate - class create "card" with 3 attributes, suit and number (suit does not matter in blackjack but useful for other card games)
+	suit - 		diamond, club, heart, and spade
+	number -	ace, 2-10, jack, queen, and king
+	points -		ace = 1 or 11, 2 - 10 = 2 - 10, jack/queen/king = 10
+
+List:
+dealerhand[]
+
+
+player()
+
+deck() - generate a list of 52 unique card objects
+	loop through suit and number and append to list
+
+bet() - select amount to bet, limited to the lesser of 100 or the player's bankroll
+	pompt player to enter the integer within the limited range
+	verify to be integer within range
+	deduct amount from bankroll and save to betamount	
+	
+deal_dealer() - deal 1 card from deck to dealer
+	randomly select 1 card from deck
+	remove from deck
+	append to dealerhand[]
+	if dealer has 2 cards:
+		check_bj()
+			if TRUE, break
+	if dealer has more than 2 cards:
+		check_bust()
+			if TRUE, set dealerbust = TRUE
+			break
+		check_hard17()
+
+deal_player() - deal 1 card from deck to player
+	randomly select 1 card from deck
+	remove from deck
+	append to player's hand
+	if player has 2 cards:
+		check_bj(player)
+			if TRUE, break
+		check_split()
+			if TRUE, break
+		check_double()
+			if TRUE, break
+	if player has more than 2 cards:
+		check_bust(player)
+			if TRUE, set playerbust = TRUE
+			break
+	player_decision()
+	
+check_bj() - check if hand is blackjack
+	if player's hand = 21 points, return TRUE
+
+split - split them into 2 hands
+	move 1 card from hand in index n to hand in index n+1 with same betamount
+	loop through hand dictionary of player
+		deal_player()
+	
+double - player hit once more and couble the bet amount
+	call deal_card
+	corresponding betamount = betamount x 2
+
+surrender - player lose half of betamount
+	deduct half from betamount and add to bankroll
+	delete the other half
+
+insurance - if dealer gets blackjack, it's a draw, else continue playing as usual and lose insurance bet
+
+check_bust()
+	
+check_hard17()
+	if dealerhand[] points is hard 17 or higher, check_winner()
+	else dealerhand()
+
+check_winner() - compare player's hand(s) to dealerhand
+	loop through player's hand(s)
+		determine hand value
+		if player's hand > dealer's, win
+		if player's hand == dealer's, draw
+		else lose
+	
+player_decision - ask for player input
+	Hit (Y/N)
+	if Y - deal_player
+
+new_game
+	delete deck
+	empty hand(s)
+	empty bet(s)
+	0 dealerhand
+	check bankroll, ask to add fund if under 100, not allow to play if fund hits 0
+	Ask player if they want another game
+

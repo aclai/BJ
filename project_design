@@ -1,26 +1,83 @@
-Blackjack - A loop of infinite games until player choose to quit
-	1 deck
-	1 player
+Blackjack - A loop of infinite games until player chooses to quit
+	1 deck for now
+	1 player for now
 	Shuffle after every game
 	No hole card
 	Unlimited split
 	Double on hard 10/11
 	Deal stops at hard 17
 
-Ask for player name
-Create deck
-bet
+Class:
+User
+	name
+	acct_balance
+	bet
+	hand
+	
+	create_user
+	bet
+	add_fund
+	
+Dealer
+	game
+	hand
+	
+Card
+	suit
+	card_num
+	
+	return_suit
+	return_card_num
+	card_reader
+	deal_card
+	
+Deck
+	owner
+	deck
+	
+	create_deck
+	add_card
+	remove_card
+	empty_hand
+	deal_card
+	
+Functions:
+	calculate_hand
+	compare_hand
+	new_game
+	player_turn
+	dealer_turn
+
+Game
+
+No loop
+create/load player(s)
+create dealer
+create deck
+
+Loop starts
+
+Ask bet amount
 deal cards - 1 player, 1 dealer, 1 player
-player decision
+check blackjack, double, split
+	if bj --> deal card to dealer
+	elif double 
+		ask player
+			if yes --> check fund
+				if yes --> take fund & deal card to dealer
+				else --> ask to add fund
+					if yes --> ask for amount, take amount, deal 1 card to player, deal card to dealer
+					else go to check split
+
 deal to dealer
 result
 ask if player wants to continue
 
 
 Class:
-Player - class create "player" with 3 attributes, name, bankroll, and hand
+Player - class create "player" with 3 attributes, name, acct_balance, and hand
 	name - ask for player input
-	bankroll - defaut starts wtih 10000
+	acct_balance - defaut starts wtih 10000
 	hand - {index, [betamount, [hand]]} 		(4 in total, limited by 4 of the same kind in a deck)
 		{1, [100, [club of ace, spade of 10]]}
 		{2, [200, [heart of ace, diamond of 2]]}
@@ -31,19 +88,13 @@ CardCreate - class create "card" with 3 attributes, suit and number (suit does n
 	number -	ace, 2-10, jack, queen, and king
 	points -		ace = 1 or 11, 2 - 10 = 2 - 10, jack/queen/king = 10
 
-List:
-dealerhand[]
-
-
-player()
-
 deck() - generate a list of 52 unique card objects
 	loop through suit and number and append to list
 
-bet() - select amount to bet, limited to the lesser of 100 or the player's bankroll
+bet() - select amount to bet, limited to the lesser of 100 or the player's acct_balance
 	pompt player to enter the integer within the limited range
 	verify to be integer within range
-	deduct amount from bankroll and save to betamount	
+	deduct amount from acct_balance and save to betamount	
 	
 deal_dealer() - deal 1 card from deck to dealer
 	randomly select 1 card from deck
@@ -88,7 +139,7 @@ double - player hit once more and couble the bet amount
 	corresponding betamount = betamount x 2
 
 surrender - player lose half of betamount
-	deduct half from betamount and add to bankroll
+	deduct half from betamount and add to acct_balance
 	delete the other half
 
 insurance - if dealer gets blackjack, it's a draw, else continue playing as usual and lose insurance bet
@@ -115,6 +166,6 @@ new_game
 	empty hand(s)
 	empty bet(s)
 	0 dealerhand
-	check bankroll, ask to add fund if under 100, not allow to play if fund hits 0
+	check acct_balance, ask to add fund if under 100, not allow to play if fund hits 0
 	Ask player if they want another game
 

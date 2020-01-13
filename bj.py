@@ -1,8 +1,15 @@
 # create object "card", which stores the index value of suit and number of cards. [x, y] x 1 - 4 for the 4 suits & y 1 - 13
-import Card
+import card
+import deck
+import user
+import dealer
+import gameplay_method
 
-# starting chips in millions of dollars
-account_balance = 10000
+user.create_user()
+dealer.Dealer()
+deck.create_deck()
+
+
 
 # infinite loop until player answer "N" in newgame.py 
 while True:
@@ -10,25 +17,15 @@ while True:
     # adding this layer to allow breaking as soon as someone bust without also eliminating the importution of "new_game.py"
     while True:
         # generate a list of a single deck of cards
-        import deck
-        deck = deck.create_deck()
+        
+        Deck = card.create_deck()
         print (deck)
         
-        # a list to save the dealer's hand
-        dealerhand = []
-        # a list to save the player's hand
-        playerhand = []
-        
         # ask player for bet amount
-        import bet            
-        bet_amount = bet.bet()
+
         
-        print(account_balance)
-        account_balance = account_balance + bet_amount
-        print(account_balance)
-        
-        
-        import deal_card
+
+               
         # deal 1st card to player
         deal_card.deal_card(playerhand)
         # deal 1 card to dealer

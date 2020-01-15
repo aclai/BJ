@@ -9,7 +9,7 @@ class User:
         self.password = password
         self.acct_balance = acct_balance
         self.bet = bet
-        self.hand = []
+        self.hand = [[],[],[],[]]
         self.hand_value = []
         
     def create_user(self):

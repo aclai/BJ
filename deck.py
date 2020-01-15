@@ -1,4 +1,5 @@
 import card
+import random
 
 class Deck:
     def __init__(self, owner):
@@ -26,10 +27,10 @@ class Deck:
         
     # input is either playerhand or dealerhand
     def deal_card(self, deck, hand):
-        random_card = random.choice(DECK)
+        random_card = random.choice(deck)
         print(random_card)
-        len(DECK)
-        DECK.remove(random_card)
-        len(DECK)
-        hand.append(hand)
+        len(deck)
+        deck.remove(random_card)
+        len(deck)
+        hand.append([random_card])
         print(hand)

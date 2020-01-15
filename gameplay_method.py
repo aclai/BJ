@@ -8,7 +8,9 @@ def calculate_hand(owner, hand):
     if len(hand) == 2 and 1 in hand and 10 or 11 or 12 or 13 in hand:
         hand_value = "bj"
     else:
-        hand_value = hand[1].card_num + hand[2].card_num
+        hand_value = 0
+        for i in len(hand) + 1:
+            hand_value = hand_value + hand[1].card_num
     if 1 in hand and points <= 11:
         hand_value = hand_value + 10        
         
@@ -63,8 +65,11 @@ def hit_decision():
 def split_decision():
     user-choice = input("do you want to split?[Y/N]")
         if user_choice == "Y" or "Yes" or "yes":
-            removed_card = deck.remove_card(player)
-            deck.add_card(removed_card)
+            removed_card = player.deck[0].remove_card(player)
+            player.deck[1].add_card(removed_card)
+            for i in num_of_hands:
+                deck.deal_card(player.hand[i-1]
+                player_turn(player.hand[i-1]
         elif user_choice == "N" or "No" or "no":
             hit_decision()
         else:
@@ -82,8 +87,6 @@ def double_decision():
         else:
             print("please answer [Y/N]")
             double_decision()            
-    
-    
-    
+           
 def dealer_turn():
     

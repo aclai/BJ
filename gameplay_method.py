@@ -9,9 +9,9 @@ def calculate_hand(owner, hand):
         hand_value = "bj"
     else:
         hand_value = 0
-        for i in len(hand) + 1:
-            hand_value = hand_value + hand[1].card_num
-    if 1 in hand and points <= 11:
+        for i in len(hand):
+            hand_value = hand_value + hand[i].card_num
+    if hand_value != "bj" and 1 in hand and points <= 11:
         hand_value = hand_value + 10        
         
 def compare_hand():
@@ -89,4 +89,8 @@ def double_decision():
             double_decision()            
            
 def dealer_turn():
-    
+    dealer_hand = calculate_hand(dealer, hand)
+    if dealer_hand == "bj" or dealer_hand  > 17 or dealer_hand  == 17 and 1 is not in hand:
+        pass
+    else:
+        dealer_turn()

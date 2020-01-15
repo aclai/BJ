@@ -20,7 +20,7 @@ class Deck:
         hand.append(hand)
     
     def remove_card(self, card):
-        card.remove(random_card)
+        card.remove(card)
         
     def empty_hand(self, card):
         card.clear()

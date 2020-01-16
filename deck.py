@@ -2,10 +2,12 @@ import card
 import random
 
 class Deck:
+    #done
     def __init__(self, id):
         self.id = id
         self.deck = []
-        
+    
+    #done    
     def create_full_deck(self):
         #print(deck)
         for x in range(0, 4):
@@ -26,11 +28,10 @@ class Deck:
         self.deck.clear()
         
     # input is either playerhand or dealerhand
-    def deal_card(self, deck, hand):
-        random_card = random.choice(deck)
+    def deal_card(self):
+        random_card = random.choice(main_deck.deck)
         print(random_card)
-        len(deck)
-        self.deck.remove(random_card)
-        len(deck)
-        hand.append([random_card])
+        main_deck.deck.remove(random_card)
+        len(main_deck)
+        self.deck.append([random_card])
         print(hand)

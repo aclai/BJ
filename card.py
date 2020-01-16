@@ -1,4 +1,5 @@
 class Card:
+    #done
     def __init__ (self, suit, card_num):
         self.suit = suit
         self.card_num = card_num

@@ -13,7 +13,11 @@ player.input_chip()
 print(player.acct_balance)
 print(player.bet)
 print(player.hand)
+player.create_empty_hands()
+print(player.hand[1].deck)
+print(len(player.hand))
 dealer = dealer.Dealer("bj")
+dealer.create-empty_hand()
 print(dealer.game)
 main_deck = deck.Deck("main_deck")
 print(main_deck.id)
@@ -22,18 +26,19 @@ main_deck.create_full_deck()
 print(main_deck.deck)
 print(len(main_deck.deck))
 
+player_hand_counter = 0
 # infinite loop until player answer "N" in newgame.py 
 while True:
     
     # adding this layer to allow breaking as soon as someone bust without also eliminating the import of "new_game.py"
     while True:
-             
         # deal 1st card to player
-        deal_card.deal_card(playerhand)
+        player.hand[1].deal_card()
         # deal 1 card to dealer
-        deal_card.dealcard(dealerhand)
+        dealer.hand[1].deal_card()
         # deal 2nd card to player | import all outcomes and ask for player decision until playerbust or dealer's turn
-        deal_card.dealcard(playerhand)
+        for i in player.hand:
+            gameplay_method.player_turn()
 
         if playerbust == True:
             break

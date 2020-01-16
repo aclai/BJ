@@ -1,7 +1,7 @@
 import deck
 
 class User:
-    
+    #done
     def __init__(self, version=1, user_id=1):
         self.version = version
         self.user_id = user_id
@@ -9,9 +9,10 @@ class User:
         self.password = ""
         self.acct_balance = 0
         self.bet = 0
-        self.hand = [[],[],[],[]]
+        self.hand = []
         self.hand_value = []
-        
+    
+    #done
     def input_name(self):
         self.name = input("Please enter your name:")
 
@@ -38,6 +39,7 @@ class User:
     def hand_value(self, value):
         self.hand_value.append(value)
     
+    #done
     def input_chip(self):
         while True:
             try:
@@ -52,7 +54,10 @@ class User:
                 self.acct_balance = self.acct_balance + input_chip
                 break
             
-    
+    def create_empty_hands(self):
+        for i in [1,2,3,4]:
+            self.hand.append(deck.Deck("player_hand_" + str(i)))
+            
     
     
     #later when branch off blackjack and become universal & save user

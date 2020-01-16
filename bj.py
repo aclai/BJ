@@ -5,27 +5,29 @@ import user
 import dealer
 import gameplay_method
 
-user.create_user()
-dealer.Dealer()
-deck.create_deck()
-
-
+player = user.User()
+print(player)
+player.input_name()
+print(player.name)
+player.input_chip()
+print(player.acct_balance)
+print(player.bet)
+print(player.hand)
+dealer = dealer.Dealer("bj")
+print(dealer.game)
+main_deck = deck.Deck("main_deck")
+print(main_deck.id)
+print(main_deck.deck)
+main_deck.create_full_deck()
+print(main_deck.deck)
+print(len(main_deck.deck))
 
 # infinite loop until player answer "N" in newgame.py 
 while True:
     
-    # adding this layer to allow breaking as soon as someone bust without also eliminating the importution of "new_game.py"
+    # adding this layer to allow breaking as soon as someone bust without also eliminating the import of "new_game.py"
     while True:
-        # generate a list of a single deck of cards
-        
-        Deck = card.create_deck()
-        print (deck)
-        
-        # ask player for bet amount
-
-        
-
-               
+             
         # deal 1st card to player
         deal_card.deal_card(playerhand)
         # deal 1 card to dealer

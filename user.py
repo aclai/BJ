@@ -2,22 +2,20 @@ import deck
 
 class User:
     
-    def __init__(self, name, acct_balance, version=1, user_id=None, password=1234):
+    def __init__(self, version=1, user_id=1):
         self.version = version
         self.user_id = user_id
-        self.name = name
-        self.password = password
-        self.acct_balance = acct_balance
-        self.bet = bet
+        self.name = ""
+        self.password = ""
+        self.acct_balance = 0
+        self.bet = 0
         self.hand = [[],[],[],[]]
         self.hand_value = []
         
-    def create_user(self):
-        name = input("Please enter User name")
-        acct_balance = input_chip
-        player = User(name, acct_balance)
+    def input_name(self):
+        self.name = input("Please enter your name:")
 
-    def bet(self):
+    def input_bet(self):
         while True:
             try:
                 bet_amount = int(input ("please enter your bet in millions of dollars:"))
@@ -33,28 +31,27 @@ class User:
                 continue
             else:
                 break    
-        bet = bet_amount
+        self.bet = bet_amount
         bet_amount = bet_amount*(-1)
         add_fund(bet_amount)       
-
-    def add_fund(self):
-        amount = input_chip
-        acct_balance = acct_balance + amount
         
     def hand_value(self, value):
-        hand_value.append(value)
+        self.hand_value.append(value)
     
     def input_chip(self):
         while True:
             try:
-                acct_balance = int(input ("please enter the number of chips in millions of dollars you would like to buy"))
+                input_chip = int(input ("please enter the number of chips in millions of dollars you would like to buy:"))
             except ValueError:
                 print("integer please")
                 continue
-            if acct_balance <= 1000:
+            if input_chip <= 1000:
                 print("the minimum you can buy is 1 billion / 1000 1-million-dollar chips")
                 continue
-            return acct_balance
+            else:
+                self.acct_balance = self.acct_balance + input_chip
+                break
+            
     
     
     

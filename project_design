@@ -75,7 +75,7 @@ ask if player wants to continue
 
 
 Class:
-Player - class create "player" with 3 attributes, name, acct_balance, and hand
+player - class create "player" with 3 attributes, name, acct_balance, and hand
 	name - ask for player input
 	acct_balance - defaut starts wtih 10000
 	hand - {index, [betamount, [hand]]} 		(4 in total, limited by 4 of the same kind in a deck)

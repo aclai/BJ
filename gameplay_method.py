@@ -9,15 +9,15 @@ def player_turn(player_hand, main_deck):
     print(hand_value)
     if hand_value == "bj":
         pass
-    #elif len(player_hand) == 2:
-    #    #check split        
+    elif len(player_hand) == 2:
+        #check split        
     #    if player_hand[0].card_point == player_hand[1].card_point:
     #        split_decision(player_hand, main_deck)
-    #    #check double
-    #    elif hand_value == 20 and 1 in player_hand or hand_value == 9 or hand_value == 10:
-    #        double_decision(player_hand, main_deck)
-    #    else:
-    #        hit_decision(player_hand, main_deck)
+        #check double
+        if hand_value == 20 and 1 in player_hand or hand_value == 9 or hand_value == 10:
+            double_decision(player_hand, main_deck)
+        else:
+            hit_decision(player_hand, main_deck)
     else:
         hit_decision(player_hand, main_deck)
     return player_hand
@@ -64,12 +64,11 @@ def check_winner(player_hand, dealer_hand):
         payout = 1
     elif player_point == "bj":
         payout = 2.5
-    elif player_point > dealer_point:
+    elif dealer_point > 21 or player_point > dealer_point:
         payout = 2
     else:
         payout = 0
     return payout
-    
         
 def new_game():
     deck.clear()
@@ -120,7 +119,7 @@ def double_decision(player_hand, main_deck):
         hit_decision()
     else:
         print("please answer [Y/N]")
-        double_decision()            
+        double_decision(player_hand, main_deck)            
            
 def dealer_turn(player_hand, dealer_hand, main_deck):
     print("dealer_turn")

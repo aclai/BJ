@@ -20,7 +20,7 @@ print("player hand with 1 card:")
 print(player_hand[0].card_eng_name)
 print("dealer hand with 1 card:")
 print(dealer_hand[0].card_eng_name)
-print("length of main_deck aftter dealing 2 cards")
+print("length of main_deck aftter dealing 2 cards:")
 print(len(main_deck))
 
 gameplay_method.player_turn(player_hand, main_deck)
@@ -30,12 +30,12 @@ for i in player_hand:
 	
 gameplay_method.dealer_turn(player_hand, dealer_hand, main_deck)
 
-print("dealer_hand after dealer is done")
+print("dealer_hand after dealer is done:")
 for i in dealer_hand:
     print(i.card_eng_name)
 
 outcome = gameplay_method.check_winner(player_hand, dealer_hand)
-print("the multiplier for payout base of the bet amount - 2.5 for bj, 2 for win, 1 for draw, and 0 for lose")
+print("the multiplier for payout base of the bet amount - 2.5 for bj, 2 for win, 1 for draw, and 0 for lose:")
 print(outcome)
 
 

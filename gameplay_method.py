@@ -23,11 +23,26 @@ def player_turn(player_hand, main_deck):
     return player_hand
         
 def calculate_hand(hand):
-    if len(hand) == 2 and 1 in hand:
-        if 9 in hand or 10 in hand or 11 in hand or 12 in hand:
+    if len(hand) == 2:
+        for i in hand:
+            if i.card_num == 1:
+                Ace = True
+            else:
+                Ace = False
+            if i.card_num == 9 or i.card_num == 10 or i.card_num == 11 or i.card_num == 12:
+                Ten = True
+            else:
+                Ten = False
+        if Ace == True and Ten == True:
             hand_value = "bj"
         else:
-            pass
+            hand_value = 0
+            for i in hand:
+                hand_value = hand_value + i.card_point
+            if 1 in hand and hand_value <= 10:
+                hand_value = hand_value + 10 
+            else:
+                pass
     else:
         hand_value = 0
         for i in hand:

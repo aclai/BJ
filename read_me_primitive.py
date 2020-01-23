@@ -20,9 +20,14 @@ print(dealer_hand[0].card_eng_name)
 print(len(main_deck))
 
 gameplay_method.player_turn(player_hand, main_deck)
-	#follow in game instructions
+print(player_hand)
+for i in player_hand:
+    print(i.card_eng_name)
 	
-gameplay_method.dealer_turn(dealer_hand, dealer_hand, main_deck)
+gameplay_method.dealer_turn(player_hand, dealer_hand, main_deck)
+
+for i in dealer_hand:
+    print(i.card_eng_name)
 
 outcome = gameplay_method.check_winner(player_hand, dealer_hand)
 print(outcome)

@@ -18,7 +18,7 @@ def player_turn(player_hand, main_deck):
     #        hit_decision(player_hand, main_deck)
     else:
         hit_decision(player_hand, main_deck)
-    return hand_value
+    return player_hand
         
 def calculate_hand(hand):
     if len(hand) == 2 and 1 in hand:
@@ -38,8 +38,12 @@ def calculate_hand(hand):
         
 def check_winner(player_hand, dealer_hand):
     player_point = calculate_hand(player_hand)
+    print(player_point)
     dealer_point = calculate_hand(dealer_hand)
-    if player_point == dealer_point:
+    print(dealer_point)
+    if player_point > 21:
+        payout = 0
+    elif player_point == dealer_point:
         payout = 1
     elif player_point == "bj":
         payout = 2.5
@@ -61,6 +65,7 @@ def hit_decision(player_hand, main_deck):
     if user_choice == "Y":
         player_hand.move_random_card(main_deck)
         hand_value = calculate_hand(player_hand)
+        print(hand_value)
         if hand_value < 21:
             hit_decision(player_hand, main_deck)
         else:
@@ -70,6 +75,7 @@ def hit_decision(player_hand, main_deck):
     else:
         print("please answer [Y/N]")
         hit_decision(player_hand, main_deck)
+    return player_hand
 
 def split_decision(player_hand, main_deck):
     user_choice = input("do you want to split?[Y/N]")
@@ -100,6 +106,7 @@ def double_decision(player_hand, main_deck):
         double_decision()            
            
 def dealer_turn(player_hand, dealer_hand, main_deck):
+    print("dealer_turn")
     player_point = calculate_hand(player_hand)
     if player_point > 21:
         pass

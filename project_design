@@ -5,7 +5,7 @@ Blackjack - A loop of infinite games until player chooses to quit
 	No hole card
 	Unlimited split
 	Double on hard 10/11
-	Deal stops at hard 17
+	Dealer stops at hard 17
 
 Class:
 User
@@ -29,7 +29,7 @@ Card
 	return_suit
 	return_card_num
 	card_reader
-	deal_card
+	move_random_card
 	
 Deck
 	owner
@@ -39,7 +39,7 @@ Deck
 	add_card
 	remove_card
 	empty_hand
-	deal_card
+	move_random_card
 	
 Functions:
 	calculate_hand
@@ -135,7 +135,7 @@ split - split them into 2 hands
 		deal_player()
 	
 double - player hit once more and couble the bet amount
-	call deal_card
+	call move_random_card
 	corresponding betamount = betamount x 2
 
 surrender - player lose half of betamount

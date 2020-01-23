@@ -1,18 +1,9 @@
-import deck
-
-class User:
-    #done
-    def __init__(self, version=1, user_id=1):
-        self.version = version
-        self.user_id = user_id
+class Player(person.Person):
+    def __init__(self):
         self.name = ""
-        self.password = ""
         self.acct_balance = 0
         self.bet = 0
-        self.hand = []
-        self.hand_value = []
     
-    #done
     def input_name(self):
         self.name = input("Please enter your name:")
 
@@ -28,18 +19,14 @@ class User:
                 continue
             elif bet_amount > acct_balance:
                 print("insufficinet funds")
-                add_fund
+                self.input_chip()
                 continue
             else:
                 break    
         self.bet = bet_amount
         bet_amount = bet_amount*(-1)
-        add_fund(bet_amount)       
-        
-    def hand_value(self, value):
-        self.hand_value.append(value)
+        self.adjust_fund(bet_amount)       
     
-    #done
     def input_chip(self):
         while True:
             try:
@@ -51,12 +38,13 @@ class User:
                 print("the minimum you can buy is 1 billion / 1000 1-million-dollar chips")
                 continue
             else:
-                self.acct_balance = self.acct_balance + input_chip
+                self.adjust_fund(input_chip)
                 break
-            
-    def create_empty_hands(self):
-        for i in [1,2,3,4]:
-            self.hand.append(deck.Deck("player_hand_" + str(i)))
+    
+    def adjust_fund(self, amount_to_adjust):
+        self.acct_balance = self.acct_balance + amount_to_adjust
+        
+    
             
     
     

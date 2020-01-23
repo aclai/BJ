@@ -116,7 +116,7 @@ def double_decision(player_hand, main_deck):
         #player.bet = player.bet * 2
         player_hand.move_random_card(main_deck)
     elif user_choice == "N":
-        hit_decision()
+        hit_decision(player_hand, main_deck)
     else:
         print("please answer [Y/N]")
         double_decision(player_hand, main_deck)            

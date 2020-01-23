@@ -1,6 +1,8 @@
 def player_turn(player_hand, main_deck):
     player_hand.move_random_card(main_deck)
+    print("second card player receive:")
     print(player_hand[1].card_eng_name)
+    print("length of main_deck:")
     print(len(main_deck))
     hand_value = calculate_hand(player_hand)
     #check bj
@@ -112,8 +114,8 @@ def dealer_turn(player_hand, dealer_hand, main_deck):
         pass
     else:
         dealer_point = calculate_hand(dealer_hand)
+        print("dealer_point:")
         print(dealer_point)
-        print(dealer_hand)
         if 1 in dealer_hand and 6 in dealer_hand or dealer_point < 17:
             dealer_hand.move_random_card(main_deck)
             dealer_turn(player_hand, dealer_hand, main_deck)

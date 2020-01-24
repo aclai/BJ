@@ -1,9 +1,7 @@
 class Person:
-
-    def __init__(self):
-        self.hand = []
-        self.hand_value = []
-     
+    def __init__(self, name):
+        self.name = name
+        
     def add_deck(self, deck):
         self.hand.append(deck)
      

@@ -23,7 +23,8 @@ print(dealer_hand[0].card_eng_name)
 print("length of main_deck aftter dealing 2 cards:")
 print(len(main_deck))
 
-gameplay_method.player_turn(player_hand, main_deck)
+
+gameplay_method.player_turn(player, player_hand, main_deck)
 print("player_hand after player is done:")
 for i in player_hand:
     print(i.card_eng_name)

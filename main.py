@@ -11,19 +11,18 @@ import gameplay_method
 #***********************************************************************program starts here***********************************************************************
 player = player.Player()
 player.input_name()
+print("Hi, " + player.name)
 player.input_chip()
+print("Your bankroll is $ " + str(player.acct_balance))
 
 dealer = dealer.Dealer("bj")
 
 while True:
     player.input_bet()
+    print("you bet $" + str(player.bet))
     
     main_deck = deck.Deck()
-    print("length of main_deck after creating deck object:")
-    print(len(main_deck))
     main_deck.create_full_deck()
-    print("length of main_deck after create_full_deck:")
-    print(len(main_deck))
     
     dealer_hand = deck.Deck()
     dealer.add_deck(dealer_hand)
@@ -32,7 +31,9 @@ while True:
     player.add_deck(player_hand)
     
     player_hand.move_random_card(main_deck)
+    print("Your first card is " + player_hand[0].card_eng_name)
     dealer_hand.move_random_card(main_deck)
+    print("The dealer's first card is " + dealer_hand[0].card_eng_name)
     
     for i in player.hand:
         gameplay_method.player_turn(player, i, main_deck)

@@ -29,7 +29,8 @@ class Player(person.Person):
                 break    
         self.bet = bet_amount
         bet_amount = bet_amount*(-1)
-        self.adjust_fund(bet_amount)       
+        self.adjust_fund(bet_amount)    
+        print("your bankroll is now " + str(self.acct_balance))
     
     def input_chip(self):
         while True:

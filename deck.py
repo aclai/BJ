@@ -32,7 +32,6 @@ class Deck(list):
     #works for both dealing card from main_deck and spliting card into seperate decks    
     def move_random_card(self, from_deck):
         random_card = from_deck.draw_card()
-        #print(random_card)
         from_deck.remove_card(random_card)
         #len(self.deck)
         self.add_card(random_card)

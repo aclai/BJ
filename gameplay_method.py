@@ -164,13 +164,18 @@ def dealer_turn(player_hand, dealer_hand, main_deck):
     else:
         dealer_point = calculate_hand(dealer_hand)
         print("the dealer has" + str(dealer_point))
-        if dealer_point < 17:
+        if dealer_point == "bj":
+            pass
+        elif dealer_point < 17:
             dealer_hand.move_random_card(main_deck)
             dealer_turn(player_hand, dealer_hand, main_deck)
-        elif dealer_hand[0].card_point == 1 or dealer_hand[1].card_point == 1:
-            if dealer_hand[0].card_point == 6 or dealer_hand[1].card_point == 6:
-                dealer_hand.move_random_card(main_deck)
-                dealer_turn(player_hand, dealer_hand, main_deck)
+        elif dealer_point == 17:
+            if dealer_hand[0].card_point == 1 or dealer_hand[1].card_point == 1:
+                if dealer_hand[0].card_point == 6 or dealer_hand[1].card_point == 6:
+                    dealer_hand.move_random_card(main_deck)
+                    dealer_turn(player_hand, dealer_hand, main_deck)
+                else:
+                    pass
             else:
                 pass
         else:

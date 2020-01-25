@@ -85,12 +85,12 @@ def new_game(player, dealer):
         player.hand.clear()
         player.bet = 0
         dealer.hand.clear()
-        return user_choice
     elif user_choice == "N":
-        return user_choice
+        pass
     else:
         print("please answer [Y/N]")
-        new_game(player, dealer)
+        user_choice = new_game(player, dealer)
+    return user_choice
     #ask player if they want to a new game
     
 def hit_decision(player, player_hand, main_deck):
@@ -102,8 +102,7 @@ def hit_decision(player, player_hand, main_deck):
         if hand_value < 21:
             hit_decision(player, player_hand, main_deck)
         else:
-            player.add_hand_value(hand_value)
-            pass               
+            player.add_hand_value(hand_value)               
     elif user_choice == "N":
         hand_value = calculate_hand(player_hand)
         player.add_hand_value(hand_value)

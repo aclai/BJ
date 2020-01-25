@@ -3,7 +3,7 @@ import random
 
 class Deck(list):
     def __init__(self):
-        self.id = ""
+        self.double = False
         
     def create_full_deck(self):
         #print(deck)

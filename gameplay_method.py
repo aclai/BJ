@@ -73,6 +73,8 @@ def check_winner(player, player_hand, dealer_hand):
     else:
         payout = 0
         outcome = "you lose"
+    if player_hand.double == True:
+        payout = payout * 2
     print(outcome)
     player.acct_balance = player.acct_balance + player.bet * payout
     print("your bankroll is now " + str(player.acct_balance))
@@ -88,7 +90,7 @@ def new_game(player, dealer):
         return user_choice
     else:
         print("please answer [Y/N]")
-        new_game(player)
+        new_game(player, dealer)
     #ask player if they want to a new game
     
 def hit_decision(player, player_hand, main_deck):
@@ -133,11 +135,14 @@ def split_decision(player, player_hand, main_deck):
 def double_decision(player, player_hand, main_deck):
     user_choice = input("do you want to double down?[Y/N]")
     if user_choice == "Y":
-        #player.acct_balance = player.acct_balance - player.bet
-        #player.bet = player.bet * 2
+        bet_amount = player.bet
+        bet_amount = bet_amount * -1
+        player.adjust_fund(bet_amount)
         player_hand.move_random_card(main_deck)
+        print(player_hand[2])
         hand_value = calculate_hand(player_hand)
         player.add_hand_value(hand_value)
+        player_hand.double = True
     elif user_choice == "N":
         hit_decision(player, player_hand, main_deck)
     else:

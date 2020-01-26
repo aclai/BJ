@@ -48,3 +48,6 @@ class Deck(list):
         card_eng_name = (str(eng_num[card_num]) + " of " + eng_suit[suit])
         return card_eng_name
         
+    def hand_reader(self):
+        for i in self:
+            print(i.card_eng_name)

@@ -38,14 +38,16 @@ while True:
     for i in player.hand:
         gameplay_method.player_turn(player, i, main_deck)
             
-    gameplay_method.dealer_turn(player_hand, dealer_hand, main_deck)
+    for i in player.hand:
+        gameplay_method.dealer_turn(player_hand, dealer_hand, main_deck)
     
     for i in player.hand:
         gameplay_method.check_winner(player, i, dealer_hand)
         
-    new_game_choice = gameplay_method.new_game(player, dealer)       
+    new_game_choice = gameplay_method.user_choice("do you want another game?[Y/N]")       
     # ask player if they want to keep playing | if yes, reset deck, hands, and bet(s) | else, return FALSE to break from loop
     if new_game_choice == "Y":
+        gameplay_method.new_game(new_game_choice, player, dealer)
         continue
     else:
         break

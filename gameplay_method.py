@@ -67,7 +67,7 @@ def check_winner(player, player_hand, dealer_hand):
         else:
             payout = 2.5
             outcome = "you won 1.5x with a bj"
-    elif player_point > 21:
+    elif player_point > 21 or dealer_point == "bj":
         payout = 0
         outcome = "you lose"
     elif player_point == dealer_point:
@@ -82,7 +82,8 @@ def check_winner(player, player_hand, dealer_hand):
     if player_hand.double == True:
         payout = payout * 2
     print(outcome)
-    player.acct_balance = player.acct_balance + player.bet * payout
+    adjust_fund = player.bet * payout
+    player.adjust_fund(adjust_fund)
     print("your bankroll is now " + str(player.acct_balance))
         
 def new_game(user_answer, player, dealer):

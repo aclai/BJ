@@ -1,3 +1,6 @@
+"""
+Subclass of Person
+"""
 import person
 
 class Dealer(person.Person):
